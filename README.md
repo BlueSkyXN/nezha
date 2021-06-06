@@ -7,3 +7,7 @@
 其他请前往原作者仓库 https://github.com/naiba/nezha
 
 # 使用方法
+```shell
+curl -L https://cdn.jsdelivr.net/gh/BlueSkyXN/nezha@CN/nezhaCN.sh  -o nezha.sh && chmod +x nezha.sh
+sudo ./nezha.sh
+```
