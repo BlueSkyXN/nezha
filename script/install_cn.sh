@@ -65,7 +65,7 @@ pre_check() {
     fi
 
     ## CN 版默认使用 jsDelivr CDN 加速
-    GITHUB_RAW_URL="cdn.jsdelivr.net/gh/BlueSkyXN/nezha@v0.17.6-custom"
+    GITHUB_RAW_URL="cdn.jsdelivr.net/gh/BlueSkyXN/nezha@custom-v0.17.6"
     if [ -n "$CUSTOM_MIRROR" ]; then
         GITHUB_URL=$CUSTOM_MIRROR
     else
