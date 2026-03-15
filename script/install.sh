@@ -4,7 +4,7 @@
 #   System Required: CentOS 7+ / Debian 8+ / Ubuntu 16+ / Alpine 3+ /
 #     Arch 仅测试了一次，如有问题带截图反馈 dysf888@pm.me
 #   Description: 哪吒监控安装脚本
-#   Github: https://github.com/naiba/nezha
+#   Github: https://github.com/BlueSkyXN/nezha
 #========================================================
 
 NZ_BASE_PATH="/opt/nezha"
@@ -12,7 +12,7 @@ NZ_DASHBOARD_PATH="${NZ_BASE_PATH}/dashboard"
 NZ_AGENT_PATH="${NZ_BASE_PATH}/agent"
 NZ_DASHBOARD_SERVICE="/etc/systemd/system/nezha-dashboard.service"
 NZ_DASHBOARD_SERVICERC="/etc/init.d/nezha-dashboard"
-NZ_VERSION="v0.17.0"
+NZ_VERSION="v0.17.6"
 
 red='\033[0;31m'
 green='\033[0;32m'
@@ -107,7 +107,7 @@ pre_check() {
         Docker_IMG="registry.cn-shanghai.aliyuncs.com\/naibahq\/nezha-dashboard"
     else
         if [ -z "$CN" ]; then
-            GITHUB_RAW_URL="raw.githubusercontent.com/naiba/nezha/master"
+            GITHUB_RAW_URL="raw.githubusercontent.com/BlueSkyXN/nezha/v0.17.6-custom"
             GITHUB_URL="github.com"
             Get_Docker_URL="get.docker.com"
             Get_Docker_Argu=" "
@@ -555,7 +555,7 @@ restart_and_update_standalone() {
         sudo rc-service nezha-dashboard stop
     fi
 
-    sudo wget -qO $NZ_DASHBOARD_PATH/app.zip https://${GITHUB_URL}/naiba/nezha/releases/latest/download/dashboard-linux-$os_arch.zip >/dev/null 2>&1 && sudo unzip -qq $NZ_DASHBOARD_PATH/app.zip -d $NZ_DASHBOARD_PATH && sudo mv $NZ_DASHBOARD_PATH/dist/dashboard-linux-$os_arch $NZ_DASHBOARD_PATH/app && sudo rm -r $NZ_DASHBOARD_PATH/app.zip $NZ_DASHBOARD_PATH/dist
+    sudo wget -qO $NZ_DASHBOARD_PATH/app.zip https://${GITHUB_URL}/BlueSkyXN/nezha/releases/latest/download/dashboard-linux-$os_arch.zip >/dev/null 2>&1 && sudo unzip -qq $NZ_DASHBOARD_PATH/app.zip -d $NZ_DASHBOARD_PATH && sudo mv $NZ_DASHBOARD_PATH/dist/dashboard-linux-$os_arch $NZ_DASHBOARD_PATH/app && sudo rm -r $NZ_DASHBOARD_PATH/app.zip $NZ_DASHBOARD_PATH/dist
 
     if [ "$os_alpine" != 1 ]; then
         sudo systemctl enable nezha-dashboard
@@ -764,7 +764,7 @@ show_usage() {
 show_menu() {
     printf "
     ${green}哪吒监控管理脚本${plain} ${red}${NZ_VERSION}${plain}
-    --- https://github.com/naiba/nezha ---
+    --- https://github.com/BlueSkyXN/nezha ---
     ${green}1.${plain}  安装面板端
     ${green}2.${plain}  修改面板配置
     ${green}3.${plain}  启动面板
