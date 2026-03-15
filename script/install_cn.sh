@@ -64,12 +64,12 @@ pre_check() {
         os_arch="riscv64"
     fi
 
-    ## CN 版默认使用 jsDelivr CDN 加速
+    ## CN 版默认使用 jsDelivr CDN 加速，GitHub Releases 走 ghproxy 代理
     GITHUB_RAW_URL="cdn.jsdelivr.net/gh/BlueSkyXN/nezha@master"
     if [ -n "$CUSTOM_MIRROR" ]; then
         GITHUB_URL=$CUSTOM_MIRROR
     else
-        GITHUB_URL="github.com"
+        GITHUB_URL="ghproxy.net/https://github.com"
     fi
     Get_Docker_URL="get.docker.com"
     Get_Docker_Argu=" -s docker --mirror Aliyun"
