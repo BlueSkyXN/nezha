@@ -336,22 +336,8 @@ install_agent() {
 
     echo "> 安装监控Agent"
 
-    echo "正在获取监控Agent版本号"
-
-    local version=$(curl -m 10 -sL "https://api.github.com/repos/nezhahq/agent/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g')
-    if [ ! -n "$version" ]; then
-        version=$(curl -m 10 -sL "https://fastly.jsdelivr.net/gh/nezhahq/agent/" | grep "option\.value" | awk -F "'" '{print $2}' | sed 's/nezhahq\/agent@/v/g')
-    fi
-    if [ ! -n "$version" ]; then
-        version=$(curl -m 10 -sL "https://gcore.jsdelivr.net/gh/nezhahq/agent/" | grep "option\.value" | awk -F "'" '{print $2}' | sed 's/nezhahq\/agent@/v/g')
-    fi
-
-    if [ ! -n "$version" ]; then
-        err "获取版本号失败，请检查本机能否链接 https://api.github.com/repos/nezhahq/agent/releases/latest"
-        return 1
-    else
-        echo "当前最新版本为: ${version}"
-    fi
+    local version="v0.17.6"
+    echo "锁定 Agent 版本: ${version}"
 
     # 哪吒监控文件夹
     sudo mkdir -p $NZ_AGENT_PATH
